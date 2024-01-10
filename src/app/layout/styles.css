@@ -1,0 +1,11 @@
+body {
+  padding-right: 20px;
+}
+
+.ui.inverted.top.fixed.menu {
+  background: linear-gradient(
+    135deg,
+    rgb(54, 8, 128),
+    rgb(27, 23, 92)
+  ) !important;
+}
