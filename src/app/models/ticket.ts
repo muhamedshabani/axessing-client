@@ -1,3 +1,5 @@
+import { User } from './user'
+
 export interface Ticket {
   id: number
   title: string
@@ -6,4 +8,5 @@ export interface Ticket {
   lastModifiedDate: string
   stage: string | number
   labels?: unknown[]
+  collaborators?: User[]
 }

@@ -7,7 +7,14 @@ function App() {
     <>
       <Navbar />
       <Grid style={{ marginTop: '3em' }}>
-        <GridColumn width='2'>Test</GridColumn>
+        <GridColumn
+          style={{
+            height: '90vh',
+            background:
+              'linear-gradient(135deg,rgb(54, 8, 128),rgb(27, 23, 92))',
+          }}
+          width='2'
+        ></GridColumn>
         <GridColumn width='14'>
           <TicketDashboard />
         </GridColumn>

@@ -2,7 +2,7 @@ import { Menu, MenuMenu } from 'semantic-ui-react'
 
 export default function Navbar() {
   return (
-    <Menu secondary inverted fixed='top'>
+    <Menu inverted secondary fixed='top'>
       <Menu.Item header icon='amilia' />
       <Menu.Item name='Workspaces' />
       <Menu.Item name='Account' />
