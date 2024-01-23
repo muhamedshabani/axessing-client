@@ -6,7 +6,7 @@ import { TicketList } from './TicketList'
 import { TicketDashboardHeader } from './TicketDashboardHeader'
 import { Workspace } from '../../../app/models/workspace'
 import { stages } from '../../../app/models/enums/stages'
-import CreateTicketButton from '../create/CreateTicketButton'
+import TicketDetails from '../details/TicketDetails'
 
 export default function TicketDashboard(): JSX.Element {
   const [workspace, setWorkspace] = useState<Workspace>()
@@ -14,7 +14,9 @@ export default function TicketDashboard(): JSX.Element {
 
   useEffect(() => {
     axios
-      .get<Ticket[]>('http://localhost:5000/api/ticket?workspaceid=1')
+      .get<Ticket[]>(
+        'http://localhost:5000/api/ticket?workspaceid=1&backlog=false'
+      )
       .then((response) => {
         setTickets(response.data)
       })
@@ -25,8 +27,10 @@ export default function TicketDashboard(): JSX.Element {
       })
   }, [])
 
+  tickets.forEach((t) => console.log(t.stage))
+
   return (
-    <>
+    <div style={{ marginTop: '3em', marginLeft: '2em' }}>
       <TicketDashboardHeader workspace={workspace} />
       <Grid className=''>
         {stages.map((stage) => (
@@ -37,10 +41,10 @@ export default function TicketDashboard(): JSX.Element {
             >
               {stage}
             </Header>
-            <TicketList tickets={tickets} stage={stage} />
+            <TicketList tickets={tickets.filter((t) => t.stage == stage)} />
           </Grid.Column>
         ))}
       </Grid>
-    </>
+    </div>
   )
 }
