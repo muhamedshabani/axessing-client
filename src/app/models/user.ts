@@ -1,5 +1,8 @@
 export interface User {
-  id: number
-  fullname: string
-  profileURL: string
+  id: string
+  name: string
+  userName: string
+  email: string
+  phoneNumber: string
+  workspaceId: number
 }

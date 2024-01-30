@@ -1,6 +1,6 @@
-import { Grid, Header } from 'semantic-ui-react'
+import { Grid, Header, Icon } from 'semantic-ui-react'
 import { Workspace } from '../../../app/models/workspace'
-import CreateTicketButton from '../create/CreateTicketButton'
+import CreateTicket from '../create/CreateTicket'
 
 interface Props {
   workspace?: Workspace
@@ -21,14 +21,19 @@ export const TicketDashboardHeader = ({ workspace }: Props) => {
             <div className='row'>
               <div className='column'>
                 {workspace?.collaborators?.map((collaborator) => (
-                  <img src={collaborator.profileURL} width={25} height={25} />
+                  <Icon
+                    key={collaborator.id}
+                    icon='user'
+                    width={25}
+                    height={25}
+                  />
                 ))}
               </div>
             </div>
           </div>
         </Grid.Column>
         <Grid.Column width='4'>
-          <CreateTicketButton />
+          <CreateTicket collaborators={workspace?.collaborators!} />
         </Grid.Column>
       </Grid>
     </>

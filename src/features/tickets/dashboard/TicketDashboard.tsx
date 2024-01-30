@@ -6,7 +6,7 @@ import { TicketList } from './TicketList'
 import { TicketDashboardHeader } from './TicketDashboardHeader'
 import { Workspace } from '../../../app/models/workspace'
 import { stages } from '../../../app/models/enums/stages'
-import TicketDetails from '../details/TicketDetails'
+import styles from './Ticket.module.css'
 
 export default function TicketDashboard(): JSX.Element {
   const [workspace, setWorkspace] = useState<Workspace>()
@@ -27,18 +27,13 @@ export default function TicketDashboard(): JSX.Element {
       })
   }, [])
 
-  tickets.forEach((t) => console.log(t.stage))
-
   return (
-    <div style={{ marginTop: '3em', marginLeft: '2em' }}>
+    <div className={styles.main}>
       <TicketDashboardHeader workspace={workspace} />
-      <Grid className=''>
+      <Grid>
         {stages.map((stage) => (
-          <Grid.Column className={'ticketColumn'} key={stage} width='3'>
-            <Header
-              as='h4'
-              style={{ borderBottom: '5px solid rgb(235, 228, 203)' }}
-            >
+          <Grid.Column key={stage} width='3'>
+            <Header as='h4' className={styles.line}>
               {stage}
             </Header>
             <TicketList tickets={tickets.filter((t) => t.stage == stage)} />

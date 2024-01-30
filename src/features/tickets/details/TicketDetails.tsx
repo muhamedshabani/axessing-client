@@ -18,7 +18,7 @@ interface Props {
 export default function TicketDetails({ ticket }: Props) {
   const [open, setOpen] = useState(false)
 
-  const toSimpleDateTime = (fulldate: string) => {
+  const toEuropeanDateTime = (fulldate: string) => {
     let date = fulldate.split('T')[0].split('-').join('.')
     let reversed = date.slice(8, 10) + date.slice(4, 8) + date.slice(0, 4)
 
@@ -43,7 +43,7 @@ export default function TicketDetails({ ticket }: Props) {
         />
         <ModalDescription>
           <Header as='h2'>
-            Created: {toSimpleDateTime(ticket?.createdDate)}
+            Created: {toEuropeanDateTime(ticket?.createdDate)}
           </Header>
           <p>{ticket?.description}</p>
         </ModalDescription>

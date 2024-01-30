@@ -13,7 +13,6 @@ export const TicketCard = ({ ticket }: Props) => {
       <CardContent description={ticket.description.slice(0, 30) + '...'} />
       <CardContent extra>
         <Icon name='user' />
-        {ticket.collaborators ? ticket.collaborators[0].fullname : 'MS'}
       </CardContent>
       <TicketDetails ticket={ticket} />
     </Card>
