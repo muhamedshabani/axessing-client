@@ -6,7 +6,7 @@ import { TicketList } from './TicketList'
 import { TicketDashboardHeader } from './TicketDashboardHeader'
 import { Workspace } from '../../../app/models/workspace'
 import { stages } from '../../../app/models/enums/stages'
-import styles from './Ticket.module.css'
+import * as styles from './Ticket.module.css'
 
 export default function TicketDashboard(): JSX.Element {
   const [workspace, setWorkspace] = useState<Workspace>()

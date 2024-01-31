@@ -11,6 +11,7 @@ import {
 } from 'semantic-ui-react'
 import { useState } from 'react'
 import { User } from '../../../app/models/user'
+import { options } from '../../../app/models/enums/options'
 
 interface Props {
   collaborators?: User[]
@@ -18,12 +19,6 @@ interface Props {
 
 export default function CreateTicket({ collaborators }: Props) {
   const [open, setOpen] = useState(false)
-
-  const options = [
-    { text: 'Open', value: 'open' },
-    { text: 'Doing', value: 'doing' },
-    { text: 'Backlog', value: 'backlog' },
-  ]
 
   const collaboratorsDropdown = collaborators?.map((collaborator) => ({
     text: collaborator.name,
@@ -40,7 +35,7 @@ export default function CreateTicket({ collaborators }: Props) {
       }
     >
       <ModalContent>
-        <Form>
+        <Form action='post'>
           <FormGroup widths='equal'>
             <FormInput fluid label='Title' placeholder='Title...' />
             <FormSelect
